@@ -1,0 +1,43 @@
+{
+    "inputs": [
+        {
+            "id": "ado_org",
+            "type": "promptString",
+            "description": "Azure DevOps organization name  (e.g. 'msasg')",
+            "default": "msasg"
+        }
+    ],
+    "mcpServers": {
+        "microsoft/playwright-mcp": {
+            "command": "npx",
+            "args": [
+                "@playwright/mcp@latest",
+                "--browser",
+                "msedge"
+            ]
+        },
+        "ado": {
+            "type": "stdio",
+            "command": "npx",
+            "args": [
+                "-y",
+                "@azure-devops/mcp",
+                "${input:ado_org}"
+            ]
+        },
+        "s360-breeze": {
+            "command": "agency",
+            "args": [
+                "mcp",
+                "s360-breeze"
+            ]
+        },
+        "enghub": {
+            "command": "agency",
+            "args": [
+                "mcp",
+                "enghub"
+            ]
+        }
+    }
+}
